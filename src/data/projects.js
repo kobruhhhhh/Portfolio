@@ -72,7 +72,7 @@ const data = [
         'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjwvc3ZnPg==',
     },
     links: {
-      site: 'https://github.com/kobruhhhhh',
+      site: 'https://onlytype.vercel.app/',
       repo: 'https://github.com/kobruhhhhh/Onlytype',
     },
     technologies: [
@@ -93,8 +93,8 @@ const data = [
         'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjwvc3ZnPg==',
     },
     links: {
-      site: 'https://github.com/kobruhhhhh',
-      repo: 'https://github.com/kobruhhhhh?tab=repositories',
+      site: 'https://kobruh.vercel.app/',
+      repo: 'https://github.com/kobruhhhhh/Portfolio',
     },
     technologies: [
       '#React',
