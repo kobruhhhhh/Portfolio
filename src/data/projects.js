@@ -41,24 +41,25 @@ const data = [
   },
   {
     id: '3',
-    title: 'Chat Web-App',
+    title: 'JobSeekr',
     description:
-      'A chat application made using Node.js, React and ChatEngine.io, a real-time messaging platform that allows users to communicate with each other instantly. WORK IN PROGRESS',
+      'A Full-Stack Job Portal Application built using Nextjs, TS, React and MongoDB',
     image: {
-      src: 'https://i.imgur.com/KdHNi7x.png',
+      src: 'https://i.imgur.com/slr1ovC.png',
       placeholderSrc:
         'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjwvc3ZnPg==',
     },
     links: {
-      site: 'https://github.com/kobruhhhhh',
-      repo: 'https://github.com/kobruhhhhh?tab=repositories',
+      site: 'https://jobseekr.vercel.app/',
+      repo: 'https://github.com/kobruhhhhh/JobSeekr',
     },
     technologies: [
-      '#React',
+      '#Nextjs',
       '#Nodejs',
-      '#Chat-engine',
-      '#HTML',
-      '#CSS',
+      '#TypeScript',
+      '#React',
+      '#Redux',
+      '#MongoDB',
     ],
   },
   {
@@ -93,7 +94,7 @@ const data = [
         'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjwvc3ZnPg==',
     },
     links: {
-      site: 'https://kobruh.vercel.app/',
+      
       repo: 'https://github.com/kobruhhhhh/Portfolio',
     },
     technologies: [
@@ -101,7 +102,7 @@ const data = [
       '#Javascript',
       '#HTML',
       '#SASS',
-      'Netlify',
+      '#Netlify',
     ],
   },
 
