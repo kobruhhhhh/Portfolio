@@ -4,7 +4,7 @@ import { ReactComponent as DownloadIcon } from '../../../assets/download.svg';
 const downresume = () => {
 
     const resumeLink =
-        'https://rxresu.me/r/G5O7nBxK';
+        'https://rxresu.me/kobruh/kobruh';
     return (
         <div className={s.container}>
             <Button
