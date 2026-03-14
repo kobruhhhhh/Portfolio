@@ -1,46 +1,28 @@
-import s from './MainNavigation.module.scss';
-import { useState } from 'react';
-import Media from 'react-media';
-import NavLinks from '../NavLinks/NavLinks';
-import SideDrawer from '../SideDrawer/SideDrawer';
-import Burger from '../Burger/Burger';
+import PillNav from '../PillNav/PillNav';
 import BtnToggleTheme from '../../BtnToggleTheme/BtnToggleTheme';
-import Logo from '../../Logo/Logo';
+import { routes } from '../../../routes/BaseRoutes';
+import { useThemeContext } from '../../../hooks/themeHook/themeHook';
 
 const MainNavigation = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { dark } = useThemeContext();
 
-  const toggleDrawer = () => {
-    setIsDrawerOpen((prev) => !prev);
-  };
+  const navItems = [
+    { label: 'Home', href: routes.HOME, ariaLabel: 'Navigate to home page' },
+    { label: 'About', href: routes.ABOUT, ariaLabel: 'Navigate to about page' },
+    { label: 'Projects', href: routes.PROJECTS, ariaLabel: 'Navigate to projects page' },
+  ];
 
   return (
-    <>
-      <Logo className={s.desktop} />
-
-      <nav className={s.desktop}>
-        <NavLinks />
-        <BtnToggleTheme />
-      </nav>
-
-      <Media query={{ maxWidth: 768 }}>
-        {() => (
-          <>
-            <Burger onClick={toggleDrawer} />
-
-            <Logo className={s.mobile} />
-
-            <BtnToggleTheme className={s.mobile} />
-          </>
-        )}
-      </Media>
-
-      <SideDrawer show={isDrawerOpen} onClose={toggleDrawer}>
-        <nav className={s.navigationDrawerNav}>
-          <NavLinks />
-        </nav>
-      </SideDrawer>
-    </>
+    <PillNav
+      themeToggle={<BtnToggleTheme />}
+      items={navItems}
+      ease="power3.easeOut"
+      baseColor="#c4b5fd"
+      pillColor="#1a1625"
+      hoveredPillTextColor="#000000"
+      pillTextColor="#ffffff"
+      initialLoadAnimation={true}
+    />
   );
 };
 

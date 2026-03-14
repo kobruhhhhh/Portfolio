@@ -1,6 +1,6 @@
 import s from './downresume.module.scss';
 import Button from '../../../components/UIElements/Button/Button';
-import { ReactComponent as DownloadIcon } from '../../../assets/download.svg';
+import DownloadIcon from '../../../assets/download.svg?react';
 const downresume = () => {
 
     const resumeLink =

@@ -1,0 +1,63 @@
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--bg-layout-base);
+  padding: 2rem;
+}
+
+.errorContent {
+  text-align: center;
+  max-width: 600px;
+  padding: 3rem;
+  background: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: var(--txt);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.message {
+  font-size: 1.2rem;
+  color: var(--txt);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.resetButton {
+  padding: 1rem 2rem;
+  background: var(--bg);
+  color: var(--btn-primary-txt);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--bg-active);
+    transform: translateY(-2px);
+  }
+
+  &:focus {
+    outline: 2px solid var(--nav-active);
+    outline-offset: 2px;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .message {
+    font-size: 1rem;
+  }
+}

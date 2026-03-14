@@ -1,0 +1,30 @@
+// Make content areas non-blocking, but specific elements clickable
+main,
+.container {
+  pointer-events: none !important;
+  position: relative;
+  z-index: 200;
+}
+
+// Make specific interactive elements clickable
+header,
+footer,
+nav,
+a,
+button,
+input,
+select,
+textarea,
+img,
+h1, h2, h3, h4, h5, h6,
+p,
+span,
+div[role="button"],
+.header,
+.footer,
+.card,
+.modal {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 200;
+}

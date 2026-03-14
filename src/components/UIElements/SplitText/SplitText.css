@@ -1,0 +1,16 @@
+.split-parent {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.split-char,
+.split-word {
+  display: inline-block;
+  will-change: transform, opacity;
+  white-space: pre;
+}
+
+.split-char {
+  white-space: pre;
+}

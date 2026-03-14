@@ -10,42 +10,42 @@ import {
 import {
   SiPhp,
   SiPython,
-  SiAmazonaws,
   SiGooglecloud,
 } from 'react-icons/si';
+import { FaAws } from 'react-icons/fa';
 
 const TechSkills = () => {
   return (
-    <ul className={s.container}>
+    <ul className={s.container} role="list" aria-label="Technical skills">
       <li className={s.techIcon}>
-        <DiJavascript1 />
+        <DiJavascript1 aria-label="JavaScript" role="img" />
       </li>
       <li className={s.techIcon}>
-        <SiPhp />
+        <SiPhp aria-label="PHP" role="img" />
       </li>
       <li className={s.techIcon}>
-        <DiNodejs />
+        <DiNodejs aria-label="Node.js" role="img" />
       </li>
       <li className={s.techIcon}>
-        <DiReact />
+        <DiReact aria-label="React" role="img" />
       </li>
       <li className={s.techIcon}>
-        <DiMongodb />
+        <DiMongodb aria-label="MongoDB" role="img" />
       </li>
       <li className={s.techIcon}>
-        <SiGooglecloud />
+        <SiGooglecloud aria-label="Google Cloud" role="img" />
       </li>
       <li className={s.techIcon}>
-        <SiAmazonaws />
+        <FaAws aria-label="Amazon Web Services" role="img" />
       </li>
       <li className={s.techIcon}>
-        <SiPython />
+        <SiPython aria-label="Python" role="img" />
       </li>
       <li className={s.techIcon}>
-        <DiJava />
+        <DiJava aria-label="Java" role="img" />
       </li>
       <li className={s.techIcon}>
-        <DiGit />
+        <DiGit aria-label="Git" role="img" />
       </li>
     </ul>
   );

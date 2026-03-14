@@ -32,11 +32,11 @@ const ModalProjectCard = () => {
         />
 
         <div className={s.cardBody}>
-          <h3 className={s.title}>{title}</h3>
+          <h3 id="modal-title" className={s.title}>{title}</h3>
 
-          <div className={s.technologies}>
+          <div className={s.technologies} role="list" aria-label="Technologies used">
             {technologies.map((tech, index) => (
-              <span key={index}>{tech}</span>
+              <span key={index} role="listitem">{tech}</span>
             ))}
           </div>
         </div>
@@ -48,8 +48,9 @@ const ModalProjectCard = () => {
               className="primary"
               href={links.site}
               target="_blank"
+              label={`View ${title} live project`}
             >
-              <BiLinkExternal /> &nbsp; View Project
+              <BiLinkExternal aria-hidden="true" /> &nbsp; View Project
             </Button>
           )}
 
@@ -59,8 +60,9 @@ const ModalProjectCard = () => {
               className="primary"
               href={links.repo}
               target="_blank"
+              label={`View ${title} repository`}
             >
-              <BiLinkExternal /> &nbsp; Know more
+              <BiLinkExternal aria-hidden="true" /> &nbsp; Know more
             </Button>
           )}
         </div>

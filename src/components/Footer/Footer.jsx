@@ -11,17 +11,17 @@ const Footer = () => {
   // let year = date.getFullYear();
 
   return (
-    <div className={s.footer}>
+    <footer className={s.footer} role="contentinfo">
       <div className={s.container}>
         <div className={s.copyright}>
-          <h1>Made by <b className={s.purple}>
+          <p>Made by <b className={s.purple}>
             KoBruH
           </b>
-          </h1>
+          </p>
 
         </div>
 
-        <div className={s.body}>
+        <nav className={s.body} aria-label="Social media links">
           <ul className={s.socialIcons}>
             <li>
               <a
@@ -64,9 +64,9 @@ const Footer = () => {
               </a>
             </li>
           </ul>
-        </div>
+        </nav>
       </div>
-    </div>
+    </footer>
   );
 };
 

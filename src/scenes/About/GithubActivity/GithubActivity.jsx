@@ -3,13 +3,8 @@ import GitHubCalendar from 'react-github-calendar';
 
 const GithubActivity = () => {
   const colorTheme = {
-    background: 'transparent',
-    text: '#ffffff',
-    level4: '#8400b8',
-    level3: '#b22ff4',
-    level2: '#b265f6',
-    level1: '#c084f5',
-    level0: '#ecd9fc',
+    light: ['#ecd9fc', '#c084f5', '#b265f6', '#b22ff4', '#8400b8'],
+    dark: ['#ecd9fc', '#c084f5', '#b265f6', '#b22ff4', '#8400b8'],
   };
   return (
     <div className={s.container}>
@@ -19,6 +14,7 @@ const GithubActivity = () => {
         blockMargin={5}
         theme={colorTheme}
         fontSize={16}
+        colorScheme="dark"
       />
     </div>
   );

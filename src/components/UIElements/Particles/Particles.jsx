@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
+import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
-import ReactParticles from 'react-tsparticles';
 import {
   DARK_THEME_PARTICLES,
   LIGHT_THEME_PARTICLES,
 } from './particleType';
 import { useThemeContext } from '../../../hooks/themeHook/themeHook';
 
-const Particles = () => {
+const ParticlesComponent = () => {
   const { dark } = useThemeContext();
 
   const particlesInit = useCallback(async (engine) => {
@@ -19,27 +19,28 @@ const Particles = () => {
     : LIGHT_THEME_PARTICLES;
 
   return (
-    <ReactParticles
+    <Particles
+      id="tsparticles"
       init={particlesInit}
-      params={{
+      options={{
         particles: particles,
         interactivity: {
           events: {
-            onclick: {
+            onClick: {
               enable: true,
               mode: 'push',
             },
           },
           modes: {
             push: {
-              particles_nb: 1,
+              quantity: 1,
             },
           },
         },
-        retina_detect: true,
+        detectRetina: true,
       }}
     />
   );
 };
 
-export default Particles;
+export default ParticlesComponent;

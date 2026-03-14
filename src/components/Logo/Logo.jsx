@@ -9,9 +9,8 @@ const Logo = ({ className }) => {
       <Link to={routes.HOME} aria-label="site logo">
         <img
           alt="logo"
-          effect="blur"
           src={logo}
-          wrapperClassName={s.logo}
+          className={s.logo}
         />
       </Link>
     </div>

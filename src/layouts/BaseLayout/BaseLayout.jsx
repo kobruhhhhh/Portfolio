@@ -1,23 +1,30 @@
 import s from './BaseLayout.module.scss';
+import PropTypes from 'prop-types';
 import Header from '../../components/Header/Header';
-import Particles from '../../components/UIElements/Particles/Particles';
+import PixelBlast from '../../components/UIElements/PixelBlast/PixelBlast';
 import Footer from '../../components/Footer/Footer';
 import MainNavigation from '../../components/Navigation/MainNavigation/MainNavigation';
+import SkipToContent from '../../components/SkipToContent/SkipToContent';
 
 const BaseLayout = ({ children }) => {
   return (
     <div className={s.layout}>
-      <Particles />
+      <SkipToContent />
+      <PixelBlast />
 
       <Header>
         <MainNavigation />
       </Header>
 
-      <div className={s.container}>{children}</div>
+      <main id="main-content" className={s.container}>{children}</main>
 
       <Footer />
     </div>
   );
+};
+
+BaseLayout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default BaseLayout;
