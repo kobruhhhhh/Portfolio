@@ -1,5 +1,5 @@
 import s from './Modal.module.scss';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
@@ -8,12 +8,12 @@ import Backdrop from '../UIElements/Backdrop/Backdrop';
 
 const Modal = ({ children, show, onClose }) => {
   const navigate = useNavigate();
+  const nodeRef = useRef(null);
 
   const closeModal = (e) => {
     e.stopPropagation();
-
     onClose();
-    navigate(-1);
+    navigate('/projects', { replace: true });
   };
 
   useEffect(() => {
@@ -34,15 +34,17 @@ const Modal = ({ children, show, onClose }) => {
         classNames="modal"
         mountOnEnter
         unmountOnExit
+        nodeRef={nodeRef}
       >
-        <div 
+        <div
+          ref={nodeRef}
           className={s.modal}
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
         >
           <div className={s.closeWrapper} onClick={closeModal}>
-            <button 
+            <button
               className={s.closeButton}
               aria-label="Close modal"
               onClick={closeModal}

@@ -307,8 +307,8 @@ const PixelBlastComponent = () => {
   const threeRef = useRef(null);
   
   // Theme-aware color (pixels and background)
-  const color = dark ? '#B19EEF' : '#8400b8';
-  const bgColor = dark ? '#0a0416' : '#ffffff';
+  const color = dark ? '#27116f' : '#27116f';
+  const bgColor = dark ? '#0a0416' : '#F5F5F0';
 
   useEffect(() => {
     const container = containerRef.current;
@@ -351,8 +351,8 @@ const PixelBlastComponent = () => {
         value: Array.from({ length: MAX_CLICKS }, () => new THREE.Vector2(-1, -1))
       },
       uClickTimes: { value: new Float32Array(MAX_CLICKS) },
-      uShapeType: { value: SHAPE_MAP.square },
-      uPixelSize: { value: 4 * renderer.getPixelRatio() },
+      uShapeType: { value: SHAPE_MAP.diamond },
+      uPixelSize: { value: 3 * renderer.getPixelRatio() },
       uScale: { value: 2 },
       uDensity: { value: 1 },
       uPixelJitter: { value: 0 },
@@ -386,7 +386,7 @@ const PixelBlastComponent = () => {
       const h = container.clientHeight || 1;
       renderer.setSize(w, h, false);
       uniforms.uResolution.value.set(renderer.domElement.width, renderer.domElement.height);
-      uniforms.uPixelSize.value = 4 * renderer.getPixelRatio();
+      uniforms.uPixelSize.value = 3 * renderer.getPixelRatio();
     };
 
     setSize();
@@ -421,7 +421,8 @@ const PixelBlastComponent = () => {
       if (threeRef.current) threeRef.current.clickIx = (ix + 1) % MAX_CLICKS;
     };
 
-    renderer.domElement.addEventListener('pointerdown', onPointerDown, { passive: true });
+    // Listen on window so clicks anywhere on the page (including Lanyard canvas) trigger ripples
+    window.addEventListener('pointerdown', onPointerDown, { passive: true });
 
     let raf = 0;
     const animate = () => {
@@ -451,6 +452,7 @@ const PixelBlastComponent = () => {
         const t = threeRef.current;
         t.resizeObserver?.disconnect();
         cancelAnimationFrame(t.raf);
+        window.removeEventListener('pointerdown', onPointerDown);
         t.quad?.geometry.dispose();
         t.material.dispose();
         t.renderer.dispose();

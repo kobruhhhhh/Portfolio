@@ -5,6 +5,13 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler'
+      }
+    }
+  },
   plugins: [
     svgr(),
     react({
@@ -60,24 +67,30 @@ export default defineConfig({
     open: true
   },
   build: {
-    outDir: 'build',
-    sourcemap: true,
-    chunkSizeWarningLimit: 1000,
+    outDir: 'dist',
+    sourcemap: false,
+    chunkSizeWarningLimit: 5000,
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
+            if (id.includes('rapier')) {
+              return 'vendor-rapier';
+            }
+            if (id.includes('meshline')) {
+              return 'vendor-meshline';
+            }
             if (id.includes('three') || id.includes('@react-three')) {
               return 'vendor-three';
             }
             if (id.includes('gsap') || id.includes('@gsap')) {
               return 'vendor-gsap';
             }
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+            if (id.includes('react') || id.includes('react-dom')) {
               return 'vendor-react';
             }
-            if (id.includes('meshline') || id.includes('rapier')) {
-              return 'vendor-physics';
+            if (id.includes('react-router')) {
+              return 'vendor-router';
             }
             return 'vendor';
           }

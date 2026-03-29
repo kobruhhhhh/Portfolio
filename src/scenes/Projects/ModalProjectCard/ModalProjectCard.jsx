@@ -4,20 +4,19 @@ import { BiLinkExternal } from 'react-icons/bi';
 import Modal from '../../../components/Modal/Modal';
 import Button from '../../../components/UIElements/Button/Button';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import { useModal } from '../../../hooks/modalHook';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const ModalProjectCard = () => {
   const { id } = useParams();
-  const { image, title, links, technologies } = projects.find(
-    (p) => id === p.id,
-  );
-  const { isVisible, toggleModal } = useModal();
+  const project = projects.find((p) => id === p.id);
+  const { isVisible, toggleModal } = useModal(true);
 
-  useEffect(() => {
-    toggleModal();
-  }, []);
+  if (!project) {
+    return null;
+  }
+
+  const { image, title, links, technologies } = project;
 
   return (
     <Modal show={isVisible} onClose={toggleModal}>

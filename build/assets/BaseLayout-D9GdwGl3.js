@@ -1,2 +1,0 @@
-import{j as o}from"./vendor-react-kATJjRVF.js";import{P as n}from"./vendor-gZAhS3EQ.js";import{S as t,P as e,H as i,M as r,F as c}from"./SkipToContent-C2kxgBFQ.js";const m="_layout_ue1gb_1",p="_container_ue1gb_7",s={layout:m,container:p},l=({children:a})=>o.jsxs("div",{className:s.layout,children:[o.jsx(t,{}),o.jsx(e,{}),o.jsx(i,{children:o.jsx(r,{})}),o.jsx("main",{id:"main-content",className:s.container,children:a}),o.jsx(c,{})]});l.propTypes={children:n.node.isRequired};export{l as B};
-//# sourceMappingURL=BaseLayout-D9GdwGl3.js.map

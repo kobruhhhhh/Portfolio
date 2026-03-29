@@ -3,52 +3,44 @@
 }
 
 .about {
-  padding-left: .2rem;
-  font-size: 1rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  width: 100%;
+  padding: 0;
 }
 
-
-.aboutImg {
-  width: 40%;
-  min-width: 320px;
-  padding: 4rem 1rem 5rem 1rem;
-
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+.aboutTerminal {
+  width: 100%;
+  padding: 0;
 }
 
 .title {
   text-align: center;
   font-weight: 500;
   font-size: 2rem;
-  padding: 20px
+  padding: 20px;
+  color: var(--section-title-color);
+  text-shadow: var(--txt-shadow-strong);
 }
 
 .skills {
   @extend .title;
   font-size: 2.2rem;
-  padding-top: 3rem;
+  padding-top: 6rem;
 }
 
 .githubActivity {
   @extend .title;
   font-size: 2.2rem;
-  padding-top: 3rem;
+  padding-top: 6rem;
 }
 .resume {
   @extend .title;
   font-size: 2.2rem;
-  padding-top: 3rem;
+  padding-top: 6rem;
 }
 
 .purple {
   color: var(--txt-secondary);
+  text-shadow: var(--txt-shadow);
 }
 
 
@@ -61,5 +53,85 @@
 @media (max-width: 1024px) {
   .about {
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+  }
+
+  .aboutTerminal {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 6rem;
+  }
+
+  .skills {
+    padding-top: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 0 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .aboutTerminal {
+    width: 100%;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
+  .skills {
+    padding-top: 3rem;
+    font-size: 1.8rem;
+    
+    // Add more spacing for sections after the first one (Certifications, etc.)
+    &:nth-of-type(2) {
+      padding-top: 5rem;
+    }
+  }
+  
+  .githubActivity,
+  .resume {
+    padding-top: 5rem;
+    font-size: 1.8rem;
+  }
+}
+
+// Extra small devices
+@media (max-width: 375px) {
+  .content {
+    padding: 0 0.75rem 1rem;
+  }
+
+  .aboutTerminal {
+    padding: 0 0.25rem;
+  }
+
+  .skills {
+    font-size: 1.6rem;
+    
+    &:nth-of-type(2) {
+      padding-top: 4.5rem;
+    }
+  }
+  
+  .githubActivity,
+  .resume {
+    padding-top: 4.5rem;
+    font-size: 1.6rem;
   }
 }

@@ -2,6 +2,7 @@
   background: transparent;
   color: var(--txt);
   height: 100%;
+  position: relative;
 }
 
 .container {
@@ -11,4 +12,5 @@
   margin: 0 auto;
   max-width: 1440px;
   min-height: 100vh;
+  z-index: 300;
 }

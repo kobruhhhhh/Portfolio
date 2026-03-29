@@ -1,4 +1,4 @@
-@import '../../../styles/keyframes';
+@use '../../../styles/keyframes';
 
 .content {
   margin: 0 auto;
@@ -9,6 +9,7 @@
   align-items: center;
   color: var(--theme-color);
   min-height: 100vh;
+  overflow: visible;
 }
 
 .contentWrapper {
@@ -18,6 +19,7 @@
   align-items: center;
   width: 100%;
   max-width: 100%;
+  overflow: visible;
 }
 
 .header {
@@ -32,7 +34,13 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  pointer-events: auto;
+}
+
+.mobileCarouselContainer {
+  display: none;
 }
 
 .title {
@@ -43,20 +51,52 @@
   justify-content: flex-start;
   gap: 0.5rem;
   color: #FFFFFF;
-  font-weight: 700;
-  font-family: 'Octarine', sans-serif;
-  text-shadow: 0 0 20px rgba(196, 181, 253, 0.5),
-               0 0 40px rgba(196, 181, 253, 0.3);
+  font-weight: 600;
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.4),
+    0 2px 0 rgba(200,200,200,0.2),
+    0 3px 0 rgba(150,150,150,0.15),
+    0 4px 6px rgba(0,0,0,0.5),
+    0 0 20px rgba(196, 181, 253, 0.4);
+
+  :global(.light) & {
+    color: #0a0a0a;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,0.6),
+      0 2px 0 rgba(180,180,180,0.3),
+      0 3px 0 rgba(120,120,120,0.2),
+      0 4px 6px rgba(0,0,0,0.25),
+      0 0 20px rgba(80,80,80,0.35),
+      0 0 40px rgba(50,50,50,0.2);
+  }
 }
 
 .titleText {
   font-size: 2.8rem;
   margin: 0;
   color: #FFFFFF;
-  font-weight: 700;
-  font-family: 'Octarine', sans-serif;
-  text-shadow: 0 0 20px rgba(196, 181, 253, 0.5),
-               0 0 40px rgba(196, 181, 253, 0.3);
+  font-weight: 600;
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.4),
+    0 2px 0 rgba(200,200,200,0.2),
+    0 3px 0 rgba(150,150,150,0.15),
+    0 4px 6px rgba(0,0,0,0.5),
+    0 0 20px rgba(196, 181, 253, 0.4);
+
+  :global(.light) & {
+    color: #0a0a0a;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,0.6),
+      0 2px 0 rgba(180,180,180,0.3),
+      0 3px 0 rgba(120,120,120,0.2),
+      0 4px 6px rgba(0,0,0,0.25),
+      0 0 20px rgba(80,80,80,0.35),
+      0 0 40px rgba(50,50,50,0.2);
+  }
 }
 
 .wave {
@@ -83,21 +123,55 @@
   word-spacing: .3rem;
   margin: 0;
   color: #E5E5E5;
-  font-weight: 700;
-  font-family: 'Octarine', sans-serif;
-  text-shadow: 0 0 15px rgba(229, 229, 229, 0.3);
+  font-weight: 600;
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.35),
+    0 2px 0 rgba(200,200,200,0.2),
+    0 3px 0 rgba(150,150,150,0.15),
+    0 4px 6px rgba(0,0,0,0.5),
+    0 0 15px rgba(229, 229, 229, 0.2);
+
+  :global(.light) & {
+    color: #0a0a0a;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,0.6),
+      0 2px 0 rgba(180,180,180,0.3),
+      0 3px 0 rgba(120,120,120,0.2),
+      0 4px 6px rgba(0,0,0,0.25),
+      0 0 20px rgba(80,80,80,0.35),
+      0 0 40px rgba(50,50,50,0.2);
+  }
 }
+
 
 .mainName {
   color: #A78BFA;
   text-transform: none;
   font-size: 3.5rem;
   margin: 0;
-  font-weight: 700;
-  font-family: 'Octarine', sans-serif;
-  text-shadow: 0 0 30px rgba(167, 139, 250, 0.6),
-               0 0 50px rgba(167, 139, 250, 0.4),
-               0 4px 15px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  text-shadow:
+    0 1px 0 rgba(220,200,255,0.5),
+    0 2px 0 rgba(180,150,240,0.3),
+    0 3px 0 rgba(130,100,200,0.2),
+    0 4px 8px rgba(0,0,0,0.6),
+    0 0 30px rgba(167, 139, 250, 0.5),
+    0 0 50px rgba(167, 139, 250, 0.3);
+
+  :global(.light) & {
+    color: #6d28d9;
+    text-shadow:
+      0 1px 0 rgba(167,139,250,0.5),
+      0 2px 0 rgba(109,40,217,0.3),
+      0 3px 0 rgba(80,20,180,0.2),
+      0 4px 8px rgba(0,0,0,0.2),
+      0 0 20px rgba(109,40,217,0.4),
+      0 0 40px rgba(109,40,217,0.25);
+  }
 }
 
 .homeMainIcon {
@@ -115,15 +189,104 @@
 
 .typewriterWrapper {
   font-size: 2em;
-  color: #A3A3A3;
-  font-weight: 700;
-  font-family: 'Octarine', sans-serif;
-  text-shadow: 0 0 10px rgba(163, 163, 163, 0.4);
+  font-weight: 600;
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  background: linear-gradient(
+    135deg,
+    #b0b0b0 0%,
+    #d8d8d8 12%,
+    #f8f8f8 22%,
+    #ffffff 30%,
+    #e2e2e2 38%,
+    #c8c8c8 48%,
+    #f0f0f0 58%,
+    #ffffff 68%,
+    #f5f5f5 75%,
+    #d0d0d0 85%,
+    #f8f8f8 92%,
+    #ffffff 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 10s ease infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7))
+          drop-shadow(0 0 20px rgba(240, 240, 240, 0.4));
+
+  :global(.light) & {
+    background: linear-gradient(
+      135deg,
+      #1a1a1a 0%,
+      #3a3a3a 12%,
+      #666666 22%,
+      #888888 30%,
+      #4a4a4a 38%,
+      #2a2a2a 48%,
+      #555555 58%,
+      #777777 68%,
+      #3d3d3d 75%,
+      #222222 85%,
+      #4f4f4f 92%,
+      #1a1a1a 100%
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.3))
+            drop-shadow(0 0 10px rgba(0,0,0,0.2));
+  }
 }
+
 .typewriterCursor {
   font-size: 2em;
-  color: #A78BFA;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  font-weight: 600;
+  background: linear-gradient(
+    135deg,
+    #c8c8c8 0%,
+    #f0f0f0 20%,
+    #ffffff 35%,
+    #e0e0e0 50%,
+    #f8f8f8 65%,
+    #ffffff 78%,
+    #e8e8e8 90%,
+    #ffffff 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 7s ease infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6))
+          drop-shadow(0 0 18px rgba(220, 220, 220, 0.4));
+
+  :global(.light) & {
+    background: linear-gradient(
+      135deg,
+      #2a2a2a 0%,
+      #555555 20%,
+      #888888 35%,
+      #444444 50%,
+      #666666 65%,
+      #333333 78%,
+      #777777 90%,
+      #1a1a1a 100%
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.3))
+            drop-shadow(0 0 10px rgba(0,0,0,0.2));
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 
@@ -143,8 +306,24 @@
     justify-content: center !important;
   }
 
+  .titleText {
+    text-align: center;
+  }
+
   .mainTitle {
     justify-content: center !important;
+  }
+
+  .mainTitleText {
+    text-align: center;
+  }
+
+  .mainName {
+    text-align: center;
+  }
+
+  .typewriterWrapper {
+    text-align: center;
   }
 
   .lanyardContainer {
@@ -160,5 +339,87 @@
   .homeMainIcon {
     justify-content: center;
     width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding-right: 0;
+  }
+
+  .title {
+    font-size: 2.4rem;
+    justify-content: center !important;
+  }
+
+  .titleText {
+    font-size: 2.4rem;
+    text-align: center;
+  }
+
+  .mainTitle {
+    font-size: 3rem;
+    justify-content: center !important;
+  }
+
+  .mainTitleText {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .mainName {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .typewriterWrapper {
+    font-size: 1.8em;
+    text-align: center;
+  }
+
+  .typewriterCursor {
+    font-size: 1.8em;
+  }
+
+  .lanyardContainer {
+    display: none;
+  }
+
+  .mobileCarouselContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto 0;
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.9rem;
+  }
+
+  .titleText {
+    font-size: 1.9rem;
+  }
+
+  .mainTitle {
+    font-size: 2.4rem;
+  }
+
+  .mainTitleText {
+    font-size: 2.4rem;
+  }
+
+  .mainName {
+    font-size: 2.4rem;
+  }
+
+  .typewriterWrapper {
+    font-size: 1.4em;
+  }
+
+  .typewriterCursor {
+    font-size: 1.4em;
   }
 }

@@ -1,127 +1,38 @@
 import s from './IntroSection.module.scss';
-import { AiFillGithub } from 'react-icons/ai';
-import {
-  FaDiscord,
-  FaLinkedinIn,
-  FaTelegramPlane,
-  FaGoogle,
-} from 'react-icons/fa';
 
 const IntroSection = () => {
   return (
     <section className={s.content}>
       <div className={s.introduction}>
-        <div className={s.introductionText}>
-          <h1 className={s.title}>
-            LET ME <span className={s.purple}> INTRODUCE </span>{' '}
-            MYSELF
-          </h1>
+        <div className={s.glassBox}>
+          <div className={s.introductionText}>
+            <h1 className={s.title}>
+              LET ME <span className={s.purple}> INTRODUCE </span>{' '}
+              MYSELF
+            </h1>
 
-          <div className={s.description}>
-            <p>
-              I am a passionate sophomore in BCA, specializing in full-stack development <br />
-              with a flair for creating software and web applications.
-            </p>
+            <div className={s.description}>
+              <p>
+                <b className={s.purple}>Full-Stack Developer</b> specializing in MERN and MEVN stacks, focused on building scalable, high-performance web applications with clean architecture and modern design.
+              </p>
 
-            <p>
-              My skills include proficiency in{' '}
-              <i>
-                <b className={s.purple}>
-                  Node, React, Laravel,
-                </b>
-              </i>
-              <br />
-              and other relevant technologies. I have experience in
-              integrating various <br />
-              third-party libraries, API integration, push
-              notifications and analytics.
-            </p>
+              <p>
+                Experienced in delivering production-ready solutions for{' '}
+                <b className={s.purple}>50+ clients</b>, with strong expertise in JavaScript, React, Node.js, Vue.js, and backend systems.
+              </p>
 
-            <p>
-              My field of Interest's are building new
-              <i>
-                <b className={s.purple}> Technologies </b>
-              </i>
-              <br />
-              and contribution in
-              <i>
-                <b className={s.purple}> Open-source Projects. </b>
-              </i>
-            </p>
+              <p>
+                Driven by a deep interest in{' '}
+                <b className={s.purple}>Artificial Intelligence</b>,{' '}
+                <b className={s.purple}>Machine Learning</b>, and{' '}
+                <b className={s.purple}>Cybersecurity</b>, with a constant focus on innovation and impactful development.
+              </p>
+            </div>
           </div>
         </div>
 
       </div>
 
-      <div className={s.introSocial}>
-        <h1>FIND ME ON</h1>
-        <p>
-          Feel free to <span className={s.purple}>connect </span>with
-          me
-        </p>
-        <ul className={s.socialLinks}>
-          <li className={s.socialLink}>
-            <a
-              href="https://github.com/kobruhhhhh"
-              target="_blank"
-              rel="noreferrer"
-              className={s.socialIcon}
-              aria-label="github"
-            >
-              <AiFillGithub />
-            </a>
-          </li>
-
-          <li className={s.socialLink}>
-            <a
-              href="mailto:kr.lalit.4528@gmail.com"
-              target="_blank"
-              rel="noreferrer"
-              className={s.socialIcon}
-              aria-label="Email"
-            >
-              <FaGoogle />
-            </a>
-          </li>
-
-          <li className={s.socialLink}>
-            <a
-              href="https://www.linkedin.com/in/lalit-kumar-696086204/"
-              target="_blank"
-              rel="noreferrer"
-              className={s.socialIcon}
-              aria-label="linkedin"
-            >
-              <FaLinkedinIn />
-            </a>
-          </li>
-
-          <li className={s.socialLink}>
-            <a
-              href="https://t.me/Kobruh_69"
-              target="_blank"
-              rel="noreferrer"
-              className={s.socialIcon}
-              aria-label="telegram"
-            >
-              <FaTelegramPlane />
-            </a>
-          </li>
-
-          <li className={s.socialLink}>
-            <a
-              href="https://discordid.netlify.app/?id=898419793709912104"
-              target="_blank"
-              rel="noreferrer"
-              className={s.socialIcon}
-              aria-label="discord"
-            >
-              <FaDiscord />
-            </a>
-          </li>
-
-        </ul>
-      </div>
     </section>
   );
 };

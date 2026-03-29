@@ -3,8 +3,11 @@ import { Suspense } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import BaseRoutes from './routes/BaseRoutes';
 import Preloader from './components/UIElements/Preloader/Preloader';
+import useSmoothScroll from './hooks/useSmoothScroll';
 
 const App = () => {
+  useSmoothScroll();
+
   return (
     <Suspense fallback={<Preloader />}>
       <Router>

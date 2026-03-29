@@ -1,11 +1,14 @@
 .purple {
   color: var(--txt-secondary);
+  text-shadow: var(--txt-shadow);
 }
 
 .card {
   padding: 1.25rem;
   font-size: 1.25rem;
   line-height: 1.5;
+  color: var(--txt);
+  text-shadow: var(--txt-shadow);
 
   p {
     text-align: justify;
@@ -21,9 +24,10 @@
 }
 
 .footer {
-  color: #a588c0;
+  color: var(--txt-muted);
   font-size: 1rem;
   text-align: center;
+  text-shadow: var(--txt-shadow);
 
   &:before {
     content: "\2014\00A0";

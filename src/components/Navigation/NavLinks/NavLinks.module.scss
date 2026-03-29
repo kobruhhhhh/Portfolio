@@ -16,6 +16,7 @@
   font-size: 1.2rem;
   color: var(--txt);
   text-decoration: none;
+  text-shadow: var(--txt-shadow);
   transition: all 0.35s ease-out 0s;
   &:after {
     content: "";

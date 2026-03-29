@@ -14,11 +14,7 @@ const Footer = () => {
     <footer className={s.footer} role="contentinfo">
       <div className={s.container}>
         <div className={s.copyright}>
-          <p>Made by <b className={s.purple}>
-            KoBruH
-          </b>
-          </p>
-
+          <p>Made by <b className={s.purple}>kobruh</b></p>
         </div>
 
         <nav className={s.body} aria-label="Social media links">

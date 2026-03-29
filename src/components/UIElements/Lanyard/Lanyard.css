@@ -1,12 +1,48 @@
-.lanyard-wrapper {
-  position: relative;
-  z-index: 0;
-  width: 100%;
-  height: 80vh;
+.lanyard-portal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 301;
+  width: 50%;
+  height: calc(100vh - 60px); /* Exclude footer height (approx 60px) */
+  pointer-events: none;
+  overflow: visible;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  transform: scale(1);
-  transform-origin: left center;
-  overflow: hidden;
+}
+
+.lanyard-portal canvas {
+  pointer-events: auto;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Keep a placeholder in the layout so grid doesn't collapse */
+.lanyard-wrapper {
+  width: 100%;
+  height: 80vh;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .lanyard-portal {
+    width: 100%;
+    right: 0;
+    left: 0;
+  }
+
+  .lanyard-wrapper {
+    height: 60vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .lanyard-portal {
+    display: none;
+  }
+
+  .lanyard-wrapper {
+    display: none;
+  }
 }

@@ -1,20 +1,20 @@
 //styles normalizer
-@import "modern-normalize";
+@use "modern-normalize";
+
+//keyframes
+@use "keyframes";
+
+//transitions
+@use "transitions";
+
+//theme
+@use "theme";
+
+//pointer events
+@use "pointer-events";
 
 //fonts
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;500&display=swap");
-
-//keyframes
-@import "keyframes";
-
-//transitions
-@import "transitions";
-
-//theme
-@import "theme";
-
-//pointer events
-@import "pointer-events";
 
 /* Octarine Font Family */
 @font-face {
@@ -22,6 +22,7 @@
   src: url('/Octarine-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
+  font-display: swap; /* Performance: Show fallback immediately */
 }
 
 @font-face {
@@ -29,6 +30,7 @@
   src: url('/Octarine-LightOblique.otf') format('opentype');
   font-weight: 300;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -36,6 +38,7 @@
   src: url('/Octarine-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -43,6 +46,19 @@
   src: url('/Octarine-BoldOblique.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
+  font-display: swap;
+}
+
+html {
+  /* Native CSS smooth scroll */
+  scroll-behavior: smooth;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 html, body {
@@ -51,6 +67,12 @@ html, body {
   font-family: "Raleway", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {

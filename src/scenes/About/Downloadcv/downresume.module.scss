@@ -14,9 +14,10 @@
 
 .title {
   padding-top: 10px;
-  color: var(--txt);
+  color: var(--section-title-color);
   font-size: 6rem;
   font-weight: 200;
+  text-shadow: var(--txt-shadow-strong);
 }
 
 .filesImg {

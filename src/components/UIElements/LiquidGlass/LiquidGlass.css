@@ -1,0 +1,209 @@
+/* Liquid Glass Morphism Effect - Static Dark Glass */
+.liquid-glass-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 200;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Multiple liquid glass layers for depth */
+.liquid-glass-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Layer 1: Primary dark frosted glass */
+.liquid-glass-layer-1 {
+  background: rgba(10, 4, 22, 0.18);
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  animation: liquidFlow1 20s ease-in-out infinite;
+}
+
+/* Layer 2: Secondary liquid gradient with subtle purple tint */
+.liquid-glass-layer-2 {
+  background: 
+    radial-gradient(
+      ellipse 80% 60% at 30% 40%,
+      rgba(205, 95, 248, 0.08) 0%,
+      rgba(205, 95, 248, 0.03) 30%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 80% at 70% 60%,
+      rgba(98, 54, 134, 0.06) 0%,
+      rgba(98, 54, 134, 0.02) 40%,
+      transparent 80%
+    );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: liquidFlow2 25s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+  opacity: 0.4;
+}
+
+/* Layer 3: Tertiary accent highlights */
+.liquid-glass-layer-3 {
+  background: 
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(201, 91, 245, 0.04) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(112, 12, 134, 0.03) 0%,
+      transparent 50%
+    );
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: liquidFlow3 30s ease-in-out infinite;
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+}
+
+/* Dark mode specific adjustments - Darker glass */
+.dark .liquid-glass-layer-1 {
+  background: rgba(10, 4, 22, 0.25);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+}
+
+.dark .liquid-glass-layer-2 {
+  background: 
+    radial-gradient(
+      ellipse 80% 60% at 30% 40%,
+      rgba(205, 95, 248, 0.1) 0%,
+      rgba(205, 95, 248, 0.04) 30%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 80% at 70% 60%,
+      rgba(98, 54, 134, 0.08) 0%,
+      rgba(98, 54, 134, 0.03) 40%,
+      transparent 80%
+    );
+  opacity: 0.5;
+}
+
+.dark .liquid-glass-layer-3 {
+  opacity: 0.4;
+}
+
+/* Light mode specific adjustments - Light dark tinted glass */
+.light .liquid-glass-layer-1 {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px) saturate(120%) brightness(1.02);
+  -webkit-backdrop-filter: blur(8px) saturate(120%) brightness(1.02);
+}
+
+.light .liquid-glass-layer-2 {
+  background: 
+    radial-gradient(
+      ellipse 80% 60% at 30% 40%,
+      rgba(205, 95, 248, 0.06) 0%,
+      rgba(205, 95, 248, 0.02) 30%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 80% at 70% 60%,
+      rgba(98, 54, 134, 0.05) 0%,
+      rgba(98, 54, 134, 0.015) 40%,
+      transparent 80%
+    );
+}
+
+/* Liquid flow animations */
+@keyframes liquidFlow1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  33% {
+    transform: translate(2%, -2%) scale(1.02);
+    opacity: 0.95;
+  }
+  66% {
+    transform: translate(-2%, 2%) scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+@keyframes liquidFlow2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(3%, 3%) rotate(1deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-3%, -3%) rotate(-1deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes liquidFlow3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(-3%, 2%) scale(1.05) rotate(0.5deg);
+  }
+  50% {
+    transform: translate(2%, -3%) scale(0.95) rotate(-0.5deg);
+  }
+  75% {
+    transform: translate(3%, 3%) scale(1.03) rotate(0.3deg);
+  }
+}
+
+/* Performance optimization for mobile */
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass-layer-1,
+  .liquid-glass-layer-2,
+  .liquid-glass-layer-3 {
+    animation: none;
+  }
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(8px)) {
+  .liquid-glass-layer-1 {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  .dark .liquid-glass-layer-1 {
+    background: rgba(16, 13, 25, 0.6);
+  }
+  
+  .light .liquid-glass-layer-1 {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .liquid-glass-layer-1 {
+    backdrop-filter: blur(6px) saturate(160%);
+    -webkit-backdrop-filter: blur(6px) saturate(160%);
+  }
+  
+  .liquid-glass-layer-2,
+  .liquid-glass-layer-3 {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+}

@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.2rem;
+    padding: 0 0.5rem;
+  }
+}
+
+.badgeWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2.5rem;
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1.7px solid var(--card-border);
+  box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 4px 5px 10px 3px rgba(89, 4, 168, 0.25);
+    border-color: rgba(197, 115, 230, 0.883);
+  }
+
+  /* Prevent iframes from capturing scroll events */
+  iframe {
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    flex: 0 0 calc(50% - 0.75rem);
+    max-width: calc(50% - 0.75rem);
+    padding: 1rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    flex: 0 0 calc(50% - 0.6rem);
+    max-width: calc(50% - 0.6rem);
+    padding: 0.8rem 1rem;
+  }
+}
+

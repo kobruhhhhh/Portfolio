@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <HomeLayout>
       <Helmet>
-        <title>Lalit Kumar | Full-Stack Developer Portfolio</title>
+        <title>kobruh</title>
         <meta 
           name="description" 
           content="Portfolio of Lalit Kumar - Full-Stack Developer specializing in React, Node.js, and modern web technologies. Explore my projects and skills." 

@@ -10,6 +10,7 @@ const MainNavigation = () => {
     { label: 'Home', href: routes.HOME, ariaLabel: 'Navigate to home page' },
     { label: 'About', href: routes.ABOUT, ariaLabel: 'Navigate to about page' },
     { label: 'Projects', href: routes.PROJECTS, ariaLabel: 'Navigate to projects page' },
+    { label: 'Contact', href: routes.CONTACT, ariaLabel: 'Navigate to contact page' },
   ];
 
   return (

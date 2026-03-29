@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unknown-property */
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
-import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
+import { useTexture, Environment, Lightformer } from '@react-three/drei';
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 
-// Placeholder imports - replace with actual files
-// import cardGLB from '../../../assets/lanyard/card.glb';
 import lanyardTexture from '../../../assets/lanyard/lanyard.png';
-import kobruhImage from '../../../assets/Kobruh.png';
+import kobruhImage from '../../../assets/code.png';
+import backImage from '../../../assets/back.png';
 
 import * as THREE from 'three';
 import './Lanyard.css';
@@ -18,6 +18,8 @@ extend({ MeshLineGeometry, MeshLineMaterial });
 
 export default function Lanyard({ position = [0, 0, 24], gravity = [0, -40, 0], fov = 25, transparent = true }) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
+  const [opacity, setOpacity] = useState(1);
+  const placeholderRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -25,12 +27,49 @@ export default function Lanyard({ position = [0, 0, 24], gravity = [0, -40, 0], 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return (
-    <div className="lanyard-wrapper">
+  // Smooth scroll-based opacity fade
+  useEffect(() => {
+    const handleScroll = () => {
+      const placeholder = placeholderRef.current;
+      if (!placeholder) return;
+
+      const rect = placeholder.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Start fading when bottom of placeholder reaches 70% of viewport
+      // Fully gone when it reaches 20% of viewport
+      const fadeStart = windowHeight * 0.7;
+      const fadeEnd = windowHeight * 0.2;
+
+      if (rect.bottom >= fadeStart) {
+        setOpacity(1);
+      } else if (rect.bottom <= fadeEnd) {
+        setOpacity(0);
+      } else {
+        const ratio = (rect.bottom - fadeEnd) / (fadeStart - fadeEnd);
+        setOpacity(Math.max(0, Math.min(1, ratio)));
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // run on mount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const canvas = (
+    <div 
+      className="lanyard-portal"
+      style={{ 
+        opacity: opacity,
+        pointerEvents: opacity > 0.05 ? 'none' : 'none',
+        transition: 'opacity 0.1s linear'
+      }}
+    >
       <Canvas
         camera={{ position: position, fov: fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
+        style={{ pointerEvents: opacity > 0.05 ? 'auto' : 'none' }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
         <ambientLight intensity={Math.PI} />
@@ -70,6 +109,15 @@ export default function Lanyard({ position = [0, 0, 24], gravity = [0, -40, 0], 
       </Canvas>
     </div>
   );
+
+  return (
+    <>
+      {/* Placeholder keeps the grid column space in layout */}
+      <div ref={placeholderRef} className="lanyard-wrapper" />
+      {/* Portal renders the canvas fixed to viewport, visible only when hero is in view */}
+      {createPortal(canvas, document.body)}
+    </>
+  );
 }
 
 function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
@@ -106,12 +154,35 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
     bevelEnabled: false
   };
   
+  const cardGeometry = useMemo(() => {
+    const geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+    
+    // Generate proper UV coordinates
+    const uvs = [];
+    const pos = geo.attributes.position;
+    
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i);
+      const y = pos.getY(i);
+      
+      // Normalize to 0-1 range based on card dimensions
+      const u = (x + width/2) / width;
+      const v = (y + height/2) / height;
+      
+      uvs.push(u, v);
+    }
+    geo.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+    
+    return geo;
+  }, []);
+  
   const nodes = {
-    card: { geometry: new THREE.ExtrudeGeometry(shape, extrudeSettings) }
+    card: { geometry: cardGeometry }
   };
   
   const texture = useTexture(lanyardTexture);
   const cardImage = useTexture(kobruhImage);
+  const cardBackImage = useTexture(backImage);
   
   const [curve] = useState(
     () =>
@@ -120,9 +191,9 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
   const [dragged, drag] = useState(false);
   const [hovered, hover] = useState(false);
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1.3]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1.3]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1.3]);
   useSphericalJoint(j3, card, [
     [0, 0, 0],
     [0, 1.2, 0]
@@ -195,6 +266,17 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
                 map={cardImage}
+                side={THREE.DoubleSide}
+                clearcoat={isMobile ? 0 : 1}
+                clearcoatRoughness={0.15}
+                roughness={0.1}
+                metalness={0.1}
+              />
+            </mesh>
+            <mesh geometry={nodes.card.geometry} rotation={[0, Math.PI, 0]}>
+              <meshPhysicalMaterial
+                map={cardBackImage}
+                side={THREE.DoubleSide}
                 clearcoat={isMobile ? 0 : 1}
                 clearcoatRoughness={0.15}
                 roughness={0.1}

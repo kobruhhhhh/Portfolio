@@ -3,12 +3,13 @@ import { Helmet } from 'react-helmet-async';
 import projects from '../../data/projects';
 import BaseLayout from '../../layouts/BaseLayout/BaseLayout';
 import ProjectCard from './ProjectCard/ProjectCard';
+import { AiFillGithub } from 'react-icons/ai';
 
 const Projects = () => {
   return (
     <BaseLayout>
       <Helmet>
-        <title>Projects | Lalit Kumar - Full-Stack Developer Portfolio</title>
+        <title>kobruh</title>
         <meta 
           name="description" 
           content="Explore my portfolio of web development projects including React applications, full-stack solutions, and modern web technologies." 
@@ -23,15 +24,26 @@ const Projects = () => {
         <h1 className={s.title}>
           My Recent <strong className={s.purple}>Works</strong>
         </h1>
-        <p className={s.subtitle}>
-          Here are a few projects I've worked on recently.
-        </p>
+        <p className={s.subtitle}>&nbsp;</p>
 
         <ul className={s.projects}>
-          {projects.map((props) => (
-            <ProjectCard key={props.id} {...props} />
+          {projects.map((props, index) => (
+            <ProjectCard key={props.id} {...props} reverse={index % 2 !== 0} index={index} />
           ))}
         </ul>
+
+        <div className={s.githubSection}>
+          <a 
+            href={import.meta.env.VITE_SOCIAL_GITHUB} 
+            target="_blank" 
+            rel="noreferrer"
+            className={s.githubLink}
+            aria-label="Visit GitHub"
+          >
+            <AiFillGithub className={s.githubIcon} />
+            <span>More on GitHub</span>
+          </a>
+        </div>
       </div>
     </BaseLayout>
   );
