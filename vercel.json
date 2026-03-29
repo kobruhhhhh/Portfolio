@@ -3,7 +3,6 @@
   "installCommand": "pnpm install",
   "framework": "vite",
   "outputDirectory": "./dist",
-  "nodejs": "24.x",
   "headers": [
     {
       "source": "/assets/(.*)",
